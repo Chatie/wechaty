@@ -1024,6 +1024,23 @@ class Room extends RoomEventEmitter implements Sayable {
   }
 
   /**
+   * Mark the conversation as read
+   * @param {boolean} hasRead
+   *
+   * @example
+   * const bot = new Wechaty()
+   * const room = await bot.Room.find({topic: 'xxx'})
+   * await room.readMark()
+   */
+  public async readMark (hasRead?: boolean): Promise<void | boolean> {
+    try {
+      return this.wechaty.puppet.conversationReadMark(this.id, hasRead)
+    } catch (e) {
+      log.error('Room', 'readMark() exception: %s', e.message)
+    }
+  }
+
+  /**
    * Check if the room has member `contact`, the return is a Promise and must be `await`-ed
    *
    * @param {Contact} contact

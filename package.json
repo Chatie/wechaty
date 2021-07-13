@@ -1,6 +1,6 @@
 {
   "name": "wechaty",
-  "version": "0.63.3",
+  "version": "0.63.4",
   "description": "Wechaty is a RPA SDK for Chatbot Makers.",
   "main": "dist/src/mod.js",
   "typings": "dist/src/mod.d.ts",

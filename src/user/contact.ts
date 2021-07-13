@@ -845,6 +845,23 @@ class Contact extends ContactEventEmitter implements Sayable {
   }
 
   /**
+   * Mark the conversation as read
+   * @param {boolean} hasRead
+   *
+   * @example
+   * const bot = new Wechaty()
+   * const contact = await bot.Contact.find({name: 'xxx'})
+   * await contact.readMark()
+   */
+  public async readMark (hasRead?: boolean): Promise<void | boolean> {
+    try {
+      return this.wechaty.puppet.conversationReadMark(this.id, hasRead)
+    } catch (e) {
+      log.error('Contact', 'readMark() exception: %s', e.message)
+    }
+  }
+
+  /**
    * @ignore
    */
   public isReady (): boolean {
